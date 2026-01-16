@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BANTUAN MODAL RAKYAT</title>
+
+<style>
+*{box-sizing:border-box;font-family:'Segoe UI',Arial}
+body{
+  margin:0; min-height:100vh;
+  background:radial-gradient(circle at top,#1a1a1a,#000);
+  color:#fff; overflow:hidden;
+}
+
+/* WATERMARK */
+.watermark{position:fixed; inset:0; pointer-events:none; z-index:0}
+.watermark span{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:44px; font-weight:800; color:rgba(255,215,0,0.04);
+  transform:rotate(-30deg); letter-spacing:4px;
+}
+
+/* HEADER */
+.header-logo{
+  display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:14px;
+}
+.header-top{
+  display:flex; align-items:center; justify-content:center; gap:14px;
+}
+
+/* LOGO PEMERINTAH */
+.gov-logo{width:48px; height:48px}
+.gov-logo svg{width:100%; height:100%; filter:drop-shadow(0 0 6px rgba(255,215,0,.7))}
+
+/* LOGO BMR */
+.bmr-logo{display:flex; align-items:center; gap:8px}
+.bmr-icon{
+  width:46px; height:46px; border-radius:50%;
+  background:linear-gradient(135deg,#ffd700,#ffae00);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900; color:#000; box-shadow:0 0 18px rgba(255,215,0,.6);
+}
+.bmr-text{font-size:17px; font-weight:700; color:#ffd700; letter-spacing:1px}
+
+/* PROGRAM RESMI */
+.program{
+  position:relative;
+  font-size:13px; font-weight:800; letter-spacing:2px;
+  color:#ffd700; text-transform:uppercase;
+}
+.program::after{
+  content:""; position:absolute; left:-20%; top:0; height:100%; width:40%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,.6), transparent);
+  animation:shimmer 2.5s infinite;
+}
+.subprogram{
+  font-size:12px; color:#c9b25d; letter-spacing:1px; opacity:.9;
+}
+
+/* BADGE SK */
+.sk-badge{
+  margin-top:6px;
+  padding:6px 14px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#2b2200,#6b5200,#2b2200);
+  color:#ffd700;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 0 12px rgba(255,215,0,.35);
+}
+.sk-badge::after{
+  content:"";
+  position:absolute; top:0; left:-50%;
+  width:50%; height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+  animation:shimmer 3s infinite;
+}
+
+@keyframes shimmer{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(300%)}
+}
+
+/* CONTAINER */
+.container{
+  max-width:420px; margin:40px auto;
+  background:linear-gradient(145deg,#111,#1f1f1f);
+  border-radius:18px; padding:25px;
+  box-shadow:0 0 40px rgba(255,215,0,.25);
+  position:relative; z-index:2;
+}
+h1{text-align:center; color:#ffd700; margin-bottom:10px}
+label{display:block; margin-top:15px; font-size:14px; color:#ccc}
+input{
+  width:100%; padding:12px; margin-top:6px;
+  border-radius:10px; border:none; outline:none; font-size:15px;
+}
+button{
+  width:100%; margin-top:25px; padding:14px;
+  font-size:16px; font-weight:bold;
+  background:linear-gradient(135deg,#ffd700,#ffae00);
+  border:none; border-radius:12px; cursor:pointer; color:#000;
+}
+button:hover{opacity:.9}
+
+/* POPUP */
+.popup{
+  position:fixed; inset:0; background:rgba(0,0,0,.85);
+  display:none; align-items:center; justify-content:center; z-index:5;
+}
+.popup-box{
+  background:linear-gradient(145deg,#111,#222);
+  border-radius:20px; padding:30px; text-align:center;
+  box-shadow:0 0 50px rgba(255,215,0,.4); animation:zoom .5s ease;
+}
+.popup-box h2{color:#ffd700}
+.popup-box p{margin:10px 0 20px}
+.wa-btn{
+  display:inline-block; background:#25d366; color:#000;
+  padding:14px 22px; border-radius:12px; font-weight:bold; text-decoration:none;
+}
+@keyframes zoom{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* EFFECT */
+.confetti{position:fixed; width:8px; height:14px; top:-20px; animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.firework{
+  position:fixed; width:6px; height:6px; background:#ffd700; border-radius:50%;
+  animation:explode 1s ease-out forwards
+}
+@keyframes explode{to{transform:scale(8);opacity:0}}
+
+.luxury-wa{
+  margin-top:20px;
+  text-align:center;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#ffd700;
+  animation: luxuryBlink 1.6s infinite;
+  text-shadow:
+    0 0 6px rgba(255,215,0,.6),
+    0 0 14px rgba(255,215,0,.5),
+    0 0 28px rgba(255,174,0,.4);
+}
+
+@keyframes luxuryBlink{
+  0%{opacity:1; transform:scale(1)}
+  50%{opacity:.35; transform:scale(1.07)}
+  100%{opacity:1; transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+<div class="luxury-wa">
+  HUBUNGI WA ADM 085122386751
+</div>
+
+<div class="watermark"><span>BANTUAN MODAL RAKYAT</span></div>
+
+<div class="container">
+  <div class="header-logo">
+    <div class="header-top">
+      <!-- LOGO PEMERINTAH (GARUDA) -->
+      <div class="gov-logo">
+        <svg viewBox="0 0 64 64" fill="#FFD700">
+          <path d="M32 2l6 10 12 2-8 8 2 12-12-6-12 6 2-12-8-8 12-2z"/>
+          <circle cx="32" cy="30" r="6" fill="#000"/>
+        </svg>
+      </div>
+      <!-- LOGO BMR -->
+      <div class="bmr-logo">
+        <div class="bmr-icon">BM</div>
+        <div class="bmr-text">BANTUAN MODAL RAKYAT</div>
+      </div>
+    </div>
+
+    <div class="program">PROGRAM RESMI</div>
+    <div class="subprogram">Dukungan Permodalan Masyarakat</div>
+
+    <!-- UBAH NOMOR SK & TAHUN DI SINI -->
+    <div class="sk-badge">
+      SK No: 012/BMR/VI/2026 • Tahun Program: 2026
+    </div>
+  </div>
+
+  <h1>FORM PENGAJUAN</h1>
+
+  <label>Nominal Kebutuhan</label>
+  <input id="nominal" placeholder="Rp 0">
+
+  <label>NIK KTP (16 Angka)</label>
+  <input id="nik" maxlength="16" inputmode="numeric" placeholder="Masukkan 16 digit">
+
+  <button onclick="ajukan()">AJUKAN BANTUAN</button>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h2>SELAMAT 🎉</h2>
+    <p>Kebutuhan Anda disetujui</p>
+    <a class="wa-btn" href="https://wa.me/6285122386751" target="_blank">
+      Hubungi Admin WhatsApp
+    </a>
+  </div>
+</div>
+
+<script>
+const nominal=document.getElementById("nominal");
+nominal.addEventListener("input",()=>{
+  let v=nominal.value.replace(/\D/g,"");
+  nominal.value="Rp "+v.replace(/\B(?=(\d{3})+(?!\d))/g,".");
+});
+nik.addEventListener("input",e=>{e.target.value=e.target.value.replace(/\D/g,"")});
+
+function ajukan(){
+  if(nik.value.length!==16){alert("NIK harus 16 angka"); return;}
+  popup.style.display="flex"; suara(); meriah();
+}
+function suara(){
+  const u=new SpeechSynthesisUtterance("Silakan hubungi admin untuk ambil bantuannya");
+  u.lang="id-ID"; u.pitch=1.2; u.rate=0.95; speechSynthesis.speak(u);
+}
+function meriah(){
+  for(let i=0;i<80;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    c.style.animationDuration=2+Math.random()*3+"s";
+    document.body.appendChild(c); setTimeout(()=>c.remove(),5000);
+  }
+  for(let i=0;i<20;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*60+"vh";
+    document.body.appendChild(f); setTimeout(()=>f.remove(),1000);
+  }
+}
+</script>
+
+</body>
+</html>
